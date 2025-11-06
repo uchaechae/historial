@@ -16,32 +16,39 @@
       background-color: #2e7d32;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: 50px 20px;
+      background-image: linear-gradient(to right, #2e7d32, #43a047);
     }
 
     header h1 {
-      font-size: 2.2em;
+      font-size: 2.5em;
+      margin-bottom: 10px;
     }
 
     nav {
       background-color: #388e3c;
       text-align: center;
-      padding: 10px;
+      padding: 12px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 0 18px;
       font-weight: bold;
+      font-size: 1.05em;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
     }
 
     section {
       max-width: 1000px;
       margin: 40px auto;
-      padding: 20px;
+      padding: 25px;
       background-color: white;
-      border-radius: 10px;
+      border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
@@ -49,34 +56,52 @@
       color: #2e7d32;
     }
 
-    .idea {
-      background: #e8f5e9;
+    .mapArea {
+      text-align: center;
+      position: relative;
+    }
+
+    img {
+      width: 90%;
+      max-width: 700px;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .region {
+      position: absolute;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0.3;
+    }
+
+    .region:hover {
+      opacity: 0.6;
+    }
+
+    #infoBox {
+      margin-top: 20px;
+      background-color: #f1f8e9;
+      border: 1px solid #c5e1a5;
       padding: 15px;
-      border-left: 5px solid #4caf50;
-      margin-top: 15px;
+      border-radius: 8px;
+      display: none;
+      animation: fadeIn 0.6s;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       background-color: #c8e6c9;
       font-size: 0.9em;
       color: #555;
       margin-top: 40px;
     }
 
-    button {
-      background-color: #66bb6a;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1em;
-    }
-
-    button:hover {
-      background-color: #43a047;
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
@@ -89,52 +114,58 @@
   <nav>
     <a href="#problem">문제의식</a>
     <a href="#idea">핵심 아이디어</a>
-    <a href="#web">웹 구현 내용</a>
+    <a href="#map">역사 생태 인터랙션 지도</a>
   </nav>
 
   <section id="problem">
     <h2>1. 문제의식</h2>
-    <p>오늘날 우리는 기후변화, 생물 다양성 감소, 자원 고갈 등 심각한 생태환경 위기를 맞이하고 있습니다. 
-    그러나 이 문제들은 인류 역사 속에서도 여러 문명이 겪었던 공통의 경험이기도 합니다. 
-    예컨대 고대 마야 문명은 삼림 파괴로 인한 기후 악화로 몰락했고, 중세 유럽은 농지의 과도한 개간으로 토양 황폐화를 초래했습니다. 
-    이러한 역사적 사례를 분석하고 교훈을 도출하는 것은 지속 가능한 미래를 만드는 데 중요한 의미를 가집니다.</p>
+    <p>기후 변화와 자원 고갈은 현대뿐 아니라 역사 속에서도 반복된 위기입니다. 
+    문명은 생태환경에 따라 흥망했고, 인류는 위기 극복을 위해 다양한 방안을 모색해 왔습니다. 
+    사학의 관점에서 과거의 대응 사례를 재해석하면, 오늘날 지속가능한 발전의 지침을 얻을 수 있습니다.</p>
   </section>
 
   <section id="idea">
     <h2>2. 핵심 아이디어</h2>
-    <div class="idea">
-      <p><strong>아이디어명:</strong> “Eco-History Map” – 역사 속 생태 위기 사례를 시각화하고 현대 지역 문제와 연결하는 웹 플랫폼</p>
-      <p><strong>설명:</strong> 디지털 역사 지도를 통해 각 시대의 생태 위기 사례를 보여주며, 이에 대응했던 지혜(재식림 정책, 관개 기술, 공동체 협의제 등)를 함께 소개합니다. 
-      사용자는 현재 자신이 사는 지역을 선택해 ‘과거 지역 유사 사례’와 비교하여 참조할 수 있습니다.</p>
-      <p><strong>전공기여:</strong> 사료 분석, 역사적 비교 연구 방법, 문화적 맥락 해석 능력을 활용하여 과거의 지속가능한 관행을 현대적 관점으로 재조망합니다.</p>
-    </div>
+    <p><strong>Eco-History Map</strong>은 역사 속 생태 위기와 대응을 시공간적으로 보여주는 웹 애플리케이션입니다. 
+    역사학적 비교와 해석을 바탕으로 지역별 생태지혜를 시각화하고, 이를 현재의 환경 정책과 연결하는 것이 목표입니다.</p>
   </section>
 
-  <section id="web">
-    <h2>3. 웹페이지 구현 내용</h2>
-    <p>본 웹페이지는 세 가지 주요 영역으로 구성됩니다:</p>
-    <ul>
-      <li><strong>메인화면:</strong> "과거에서 미래로, 생태의 연대기"라는 문구와 함께 전통 마을 풍경 이미지가 슬라이드로 재생됩니다.</li>
-      <li><strong>문제의식 섹션:</strong> 문명사와 생태 변화의 연관 구조를 서술.</li>
-      <li><strong>아이디어 섹션:</strong> 마우스 클릭 시 ‘당시 사례 보기’ 버튼이 나타나며, 클릭하면 요약 역사 사례가 팝업으로 표시됩니다.</li>
-    </ul>
-    <button onclick="showExample()">당시 사례 보기</button>
-    <p id="exampleText" style="display:none; margin-top:15px;">예시: 조선시대 산림청(산림감찰체제) 정책으로 지속적 삼림 복원을 시행, 오늘날 지역 산림 관리 모델의 기초가 됨.</p>
+  <section id="map">
+    <h2>3. 역사 생태 지도 (인터랙션)</h2>
+    <p>지도의 각 지역을 클릭하면 해당 시대의 생태 대응 사례를 볼 수 있습니다.</p>
+    <div class="mapArea">
+      <img id="kormap" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Korean_peninsula_topographic_map.png/800px-Korean_peninsula_topographic_map.png" alt="한국 지도">
+      
+      <div class="region" data-era="조선" data-text="조선시대에는 산림감찰 체계를 도입해 산림자원을 보호하고, 벌목 제한령을 시행했습니다. 이는 현재의 산림청 제도의 기초가 되었습니다." 
+        style="top: 50%; left: 40%; width: 70px; height: 70px; background-color: green;"></div>
+
+      <div class="region" data-era="신라" data-text="신라시대에는 제사의 숲(성림)을 보호구역으로 지정해 신성한 자연 공간을 유지했습니다. 이는 문화적 생태보존의 초기 형태였습니다." 
+        style="top: 60%; left: 55%; width: 70px; height: 70px; background-color: orange;"></div>
+
+      <div class="region" data-era="백제" data-text="백제는 하천 주변의 토양 침식을 막기 위해 수리시설을 구축하고 저수지 중심의 친환경 농업을 발전시켰습니다." 
+        style="top: 65%; left: 30%; width: 70px; height: 70px; background-color: teal;"></div>
+    </div>
+
+    <div id="infoBox"></div>
   </section>
 
   <footer>
-    © 2025 Eco-History Project | 만든이: 사학과 가고 싶어요
+    © 2025 Eco-History Project | 만든이: 생태와 인간사를 연구하는 사학도
   </footer>
 
   <script>
-    function showExample() {
-      var text = document.getElementById("exampleText");
-      if (text.style.display === "none") {
-        text.style.display = "block";
-      } else {
-        text.style.display = "none";
-      }
-    }
+    const regions = document.querySelectorAll(".region");
+    const infoBox = document.getElementById("infoBox");
+
+    regions.forEach(region => {
+      region.addEventListener("click", function() {
+        const era = this.getAttribute("data-era");
+        const text = this.getAttribute("data-text");
+        infoBox.style.display = "block";
+        infoBox.innerHTML = `<h3>${era} 시대의 생태지혜</h3><p>${text}</p>`;
+        window.scrollTo({ top: infoBox.offsetTop - 100, behavior: "smooth" });
+      });
+    });
   </script>
 </body>
 </html>
