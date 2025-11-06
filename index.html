@@ -10,6 +10,7 @@
       margin: 0;
       background-color: #f1f6f4;
       color: #333;
+      transition: background-color 0.5s ease;
     }
 
     header {
@@ -50,6 +51,7 @@
       background-color: white;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
     }
 
     h2 {
@@ -74,10 +76,23 @@
       border-radius: 50%;
       cursor: pointer;
       opacity: 0.3;
+      transform: scale(1);
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     .region:hover {
       opacity: 0.6;
+      transform: scale(1.2);
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 0.4; }
+      100% { transform: scale(1); opacity: 0.7; }
+    }
+
+    .region.active {
+      animation: pulse 0.8s ease-out;
     }
 
     #infoBox {
@@ -105,6 +120,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <h1>역사에서 배우는 생태지혜</h1>
@@ -114,35 +130,41 @@
   <nav>
     <a href="#problem">문제의식</a>
     <a href="#idea">핵심 아이디어</a>
-    <a href="#map">역사 생태 인터랙션 지도</a>
+    <a href="#map">역사 생태 지도</a>
   </nav>
 
   <section id="problem">
     <h2>1. 문제의식</h2>
-    <p>기후 변화와 자원 고갈은 현대뿐 아니라 역사 속에서도 반복된 위기입니다. 
-    문명은 생태환경에 따라 흥망했고, 인류는 위기 극복을 위해 다양한 방안을 모색해 왔습니다. 
-    사학의 관점에서 과거의 대응 사례를 재해석하면, 오늘날 지속가능한 발전의 지침을 얻을 수 있습니다.</p>
+    <p>
+      기후 변화, 생물 다양성 감소, 자원 고갈은 현대뿐 아니라 역사 속에서도 반복된 위기였습니다.
+      과거 문명들은 환경의 변화에 따라 흥망을 거듭했고, 위기를 극복하기 위한 다양한 대응 사례를 남겼습니다.
+      사학의 관점에서 이러한 사례를 탐구하면 지속 가능한 발전 전략에 대한 지혜를 얻을 수 있습니다.
+    </p>
   </section>
 
   <section id="idea">
     <h2>2. 핵심 아이디어</h2>
-    <p><strong>Eco-History Map</strong>은 역사 속 생태 위기와 대응을 시공간적으로 보여주는 웹 애플리케이션입니다. 
-    역사학적 비교와 해석을 바탕으로 지역별 생태지혜를 시각화하고, 이를 현재의 환경 정책과 연결하는 것이 목표입니다.</p>
+    <p>
+      Eco-History Map은 역사 속 생태위기와 대응 사례를 시공간적으로 보여주는 웹 애플리케이션입니다.
+      클릭 가능한 역사 지도를 통해 각 시대의 생태 관리 방안을 시각화하고,
+      과거의 환경정책과 현대의 생태 복원 노력을 연결합니다.
+    </p>
   </section>
 
   <section id="map">
     <h2>3. 역사 생태 지도 (인터랙션)</h2>
-    <p>지도의 각 지역을 클릭하면 해당 시대의 생태 대응 사례를 볼 수 있습니다.</p>
+    <p>지도의 각 지역을 클릭하면 해당 시대의 생태 대응 사례를 확인할 수 있습니다.</p>
+    
     <div class="mapArea">
       <img id="kormap" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Korean_peninsula_topographic_map.png/800px-Korean_peninsula_topographic_map.png" alt="한국 지도">
-      
-      <div class="region" data-era="조선" data-text="조선시대에는 산림감찰 체계를 도입해 산림자원을 보호하고, 벌목 제한령을 시행했습니다. 이는 현재의 산림청 제도의 기초가 되었습니다." 
+
+      <div class="region" data-era="조선" data-text="조선시대에는 산림감찰 체계를 마련해 산림 파괴를 막고, 벌목 금지 정책을 통해 삼림 복원을 진행했습니다. 이는 현대 산림청 제도의 기초가 되었습니다." 
         style="top: 50%; left: 40%; width: 70px; height: 70px; background-color: green;"></div>
 
-      <div class="region" data-era="신라" data-text="신라시대에는 제사의 숲(성림)을 보호구역으로 지정해 신성한 자연 공간을 유지했습니다. 이는 문화적 생태보존의 초기 형태였습니다." 
+      <div class="region" data-era="신라" data-text="신라시대에는 제사의 숲(성림)을 보호 구역으로 지정하여 신성한 자연을 보존했습니다. 이는 종교와 생태 보존을 결합한 초기 사례로 평가됩니다." 
         style="top: 60%; left: 55%; width: 70px; height: 70px; background-color: orange;"></div>
 
-      <div class="region" data-era="백제" data-text="백제는 하천 주변의 토양 침식을 막기 위해 수리시설을 구축하고 저수지 중심의 친환경 농업을 발전시켰습니다." 
+      <div class="region" data-era="백제" data-text="백제는 하천 주변 토양 침식을 방지하기 위해 수리시설을 확충하고 저수지 중심의 농업을 발전시켰습니다. 이는 환경 친화적 국가정책의 예로 볼 수 있습니다." 
         style="top: 65%; left: 30%; width: 70px; height: 70px; background-color: teal;"></div>
     </div>
 
@@ -161,6 +183,10 @@
       region.addEventListener("click", function() {
         const era = this.getAttribute("data-era");
         const text = this.getAttribute("data-text");
+        
+        regions.forEach(r => r.classList.remove("active"));
+        this.classList.add("active");
+
         infoBox.style.display = "block";
         infoBox.innerHTML = `<h3>${era} 시대의 생태지혜</h3><p>${text}</p>`;
         window.scrollTo({ top: infoBox.offsetTop - 100, behavior: "smooth" });
