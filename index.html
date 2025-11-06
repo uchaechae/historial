@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>역사에서 배우는 생태지혜</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      background-color: #f1f6f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 2.2em;
+    }
+
+    nav {
+      background-color: #388e3c;
+      text-align: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2e7d32;
+    }
+
+    .idea {
+      background: #e8f5e9;
+      padding: 15px;
+      border-left: 5px solid #4caf50;
+      margin-top: 15px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #c8e6c9;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 40px;
+    }
+
+    button {
+      background-color: #66bb6a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    button:hover {
+      background-color: #43a047;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>역사에서 배우는 생태지혜</h1>
+    <p>과거의 기록에서 미래 환경 해법을 찾다</p>
+  </header>
+
+  <nav>
+    <a href="#problem">문제의식</a>
+    <a href="#idea">핵심 아이디어</a>
+    <a href="#web">웹 구현 내용</a>
+  </nav>
+
+  <section id="problem">
+    <h2>1. 문제의식</h2>
+    <p>오늘날 우리는 기후변화, 생물 다양성 감소, 자원 고갈 등 심각한 생태환경 위기를 맞이하고 있습니다. 
+    그러나 이 문제들은 인류 역사 속에서도 여러 문명이 겪었던 공통의 경험이기도 합니다. 
+    예컨대 고대 마야 문명은 삼림 파괴로 인한 기후 악화로 몰락했고, 중세 유럽은 농지의 과도한 개간으로 토양 황폐화를 초래했습니다. 
+    이러한 역사적 사례를 분석하고 교훈을 도출하는 것은 지속 가능한 미래를 만드는 데 중요한 의미를 가집니다.</p>
+  </section>
+
+  <section id="idea">
+    <h2>2. 핵심 아이디어</h2>
+    <div class="idea">
+      <p><strong>아이디어명:</strong> “Eco-History Map” – 역사 속 생태 위기 사례를 시각화하고 현대 지역 문제와 연결하는 웹 플랫폼</p>
+      <p><strong>설명:</strong> 디지털 역사 지도를 통해 각 시대의 생태 위기 사례를 보여주며, 이에 대응했던 지혜(재식림 정책, 관개 기술, 공동체 협의제 등)를 함께 소개합니다. 
+      사용자는 현재 자신이 사는 지역을 선택해 ‘과거 지역 유사 사례’와 비교하여 참조할 수 있습니다.</p>
+      <p><strong>전공기여:</strong> 사료 분석, 역사적 비교 연구 방법, 문화적 맥락 해석 능력을 활용하여 과거의 지속가능한 관행을 현대적 관점으로 재조망합니다.</p>
+    </div>
+  </section>
+
+  <section id="web">
+    <h2>3. 웹페이지 구현 내용</h2>
+    <p>본 웹페이지는 세 가지 주요 영역으로 구성됩니다:</p>
+    <ul>
+      <li><strong>메인화면:</strong> "과거에서 미래로, 생태의 연대기"라는 문구와 함께 전통 마을 풍경 이미지가 슬라이드로 재생됩니다.</li>
+      <li><strong>문제의식 섹션:</strong> 문명사와 생태 변화의 연관 구조를 서술.</li>
+      <li><strong>아이디어 섹션:</strong> 마우스 클릭 시 ‘당시 사례 보기’ 버튼이 나타나며, 클릭하면 요약 역사 사례가 팝업으로 표시됩니다.</li>
+    </ul>
+    <button onclick="showExample()">당시 사례 보기</button>
+    <p id="exampleText" style="display:none; margin-top:15px;">예시: 조선시대 산림청(산림감찰체제) 정책으로 지속적 삼림 복원을 시행, 오늘날 지역 산림 관리 모델의 기초가 됨.</p>
+  </section>
+
+  <footer>
+    © 2025 Eco-History Project | 만든이: 사학과 가고 싶어요
+  </footer>
+
+  <script>
+    function showExample() {
+      var text = document.getElementById("exampleText");
+      if (text.style.display === "none") {
+        text.style.display = "block";
+      } else {
+        text.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
