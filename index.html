@@ -1,200 +1,112 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>역사에서 배우는 생태지혜</title>
-  <style>
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      margin: 0;
-      background-color: #f1f6f4;
-      color: #333;
-      transition: background-color 0.5s ease;
-    }
-
-    header {
-      background-color: #2e7d32;
-      color: white;
-      text-align: center;
-      padding: 50px 20px;
-      background-image: linear-gradient(to right, #2e7d32, #43a047);
-    }
-
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    nav {
-      background-color: #388e3c;
-      text-align: center;
-      padding: 12px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 18px;
-      font-weight: bold;
-      font-size: 1.05em;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 25px;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    h2 {
-      color: #2e7d32;
-    }
-
-    .mapArea {
-      text-align: center;
-      position: relative;
-    }
-
-    img {
-      width: 90%;
-      max-width: 700px;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    .region {
-      position: absolute;
-      border-radius: 50%;
-      cursor: pointer;
-      opacity: 0.3;
-      transform: scale(1);
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .region:hover {
-      opacity: 0.6;
-      transform: scale(1.2);
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.3); opacity: 0.4; }
-      100% { transform: scale(1); opacity: 0.7; }
-    }
-
-    .region.active {
-      animation: pulse 0.8s ease-out;
-    }
-
-    #infoBox {
-      margin-top: 20px;
-      background-color: #f1f8e9;
-      border: 1px solid #c5e1a5;
-      padding: 15px;
-      border-radius: 8px;
-      display: none;
-      animation: fadeIn 0.6s;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #c8e6c9;
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 40px;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>고대 한반도 7국 생태환경 탐구</title>
+    <style>
+        body {
+            background: #f3f6f2;
+            font-family: '맑은 고딕', Arial, sans-serif;
+            margin: 0; padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #2a4c28;
+            margin-top: 30px;
+        }
+        .map-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 10px 0;
+        }
+        .korea-map {
+            position: relative;
+            width: 460px;
+            height: 570px;
+            background: #d7e7ca;
+            border-radius: 18px;
+            box-shadow: 0 2px 12px rgba(60,80,40,0.18);
+            overflow: hidden;
+        }
+        .region {
+            position: absolute;
+            cursor: pointer;
+            border-radius: 10px;
+            opacity: 0.7;
+            border: 2px solid transparent;
+            transition: opacity 0.15s, border 0.2s;
+        }
+        .region:hover, .region.selected {
+            opacity: 1;
+            border: 2px solid #206030;
+            background: #eaffea;
+        }
+        .label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #295231;
+            margin: 10px;
+        }
+        #info-box {
+            background: #fbfff8;
+            border: 1.5px solid #bdd6a0;
+            border-radius: 10px;
+            max-width: 540px;
+            margin: 35px auto;
+            padding: 24px 26px 20px 26px;
+            min-height: 110px;
+            color: #27502a;
+            box-shadow: 0 0 11px rgba(54,80,60,0.08);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+    </style>
 </head>
-
 <body>
-  <header>
-    <h1>역사에서 배우는 생태지혜</h1>
-    <p>과거의 기록에서 미래 환경 해법을 찾다</p>
-  </header>
-
-  <nav>
-    <a href="#problem">문제의식</a>
-    <a href="#idea">핵심 아이디어</a>
-    <a href="#map">역사 생태 지도</a>
-  </nav>
-
-  <section id="problem">
-    <h2>1. 문제의식</h2>
-    <p>
-      기후 변화, 생물 다양성 감소, 자원 고갈은 현대뿐 아니라 역사 속에서도 반복된 위기였습니다.
-      과거 문명들은 환경의 변화에 따라 흥망을 거듭했고, 위기를 극복하기 위한 다양한 대응 사례를 남겼습니다.
-      사학의 관점에서 이러한 사례를 탐구하면 지속 가능한 발전 전략에 대한 지혜를 얻을 수 있습니다.
-    </p>
-  </section>
-
-  <section id="idea">
-    <h2>2. 핵심 아이디어</h2>
-    <p>
-      Eco-History Map은 역사 속 생태위기와 대응 사례를 시공간적으로 보여주는 웹 애플리케이션입니다.
-      클릭 가능한 역사 지도를 통해 각 시대의 생태 관리 방안을 시각화하고,
-      과거의 환경정책과 현대의 생태 복원 노력을 연결합니다.
-    </p>
-  </section>
-
-  <section id="map">
-    <h2>3. 역사 상태 아리미 (인터랙션)</h2>
-    <p>지도의 각 지역을 클릭하면 해당 시대의 생태 대응 사례를 확인할 수 있습니다.</p>
-    
-    <div class="mapArea">
-      <img id="kormap" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Korean_peninsula_topographic_map.png/800px-Korean_peninsula_topographic_map.png" alt="한국 지도">
-
-      <div class="region" data-era="조선" data-text="조선시대에는 산림감찰 체계를 마련해 산림 파괴를 막고, 벌목 금지 정책을 통해 삼림 복원을 진행했습니다. 이는 현대 산림청 제도의 기초가 되었습니다." 
-        style="top: 50%; left: 40%; width: 70px; height: 70px; background-color: green;"></div>
-
-      <div class="region" data-era="신라" data-text="신라시대에는 제사의 숲(성림)을 보호 구역으로 지정하여 신성한 자연을 보존했습니다. 이는 종교와 생태 보존을 결합한 초기 사례로 평가됩니다." 
-        style="top: 60%; left: 55%; width: 70px; height: 70px; background-color: orange;"></div>
-
-      <div class="region" data-era="백제" data-text="백제시대의 생태 환경은 하천과 강, 저수지 중심의 풍부한 수자원과 이를 활용한 지속 가능한 농업과 자연 보존 정책이 특징이며, 이는 당시 백제의 역사와 문화, 경제 발전에 중요한 역할을 했습니다" 
-        style="top: 65%; left: 30%; width: 70px; height: 70px; background-color: teal;"></div>
-
-      <div class="region" data-era="고구려" data-text="고구려는 기원전 37년에서 서기 668년까지 존속한 고대 국가로, 당시 기후는 온난한 편이었으며 산림이 무성하고 강과 호수가 많아 물길 이동이 용이한 생태 환경이었습니다. 고산 지대를 관통하는 긴 강들이 호수와 연결되어 있어 수량이 풍부하고 깊은 물길이 형성되었으며, 이로 인해 큰 배를 만들어 효율적인 이동과 교역이 가능했습니다. 이러한 자연환경은 고구려가 광활한 영역을 지배할 수 있었던 중요한 요인입니다. 고구려 영토 주변은 삼림지대와 초원지대가 혼재했으며, 산림과 농경지를 포함한 다양한 생태계가 존재했습니다." 
-        style="top: 70%; left: 40%; width: 70px; height: 70px; background-color: teal;"></div>
+    <h1>고대 한반도 7국의 생태환경</h1>
+    <div class="map-container">
+        <div class="korea-map" id="map">
+            <!-- 고대 국가 영역 단순 사각 또는 타원 표시 -->
+            <div class="region" id="goguryeo"
+                 style="top:60px; left:200px; width:140px; height:130px; background:#c6e2ff;">고구려</div>
+            <div class="region" id="buyeo"
+                 style="top:30px; left:115px; width:90px; height:80px; background:#ffe2b7;">부여</div>
+            <div class="region" id="okjeo"
+                 style="top:90px; left:315px; width:75px; height:85px; background:#f7f7a5;">옥저</div>
+            <div class="region" id="dongye"
+                 style="top:185px; left:305px; width:90px; height:67px; background:#a4eaf7;">동예</div>
+            <div class="region" id="mahan"
+                 style="top:380px; left:60px; width:150px; height:110px; background:#b2ebc6;">마한</div>
+            <div class="region" id="byeonhan"
+                 style="top:410px; left:170px; width:70px; height:95px; background:#ffe7c5;">변한</div>
+            <div class="region" id="jinhan"
+                 style="top:380px; left:255px; width:110px; height:80px; background:#f5d5ee;">진한</div>
+        </div>
     </div>
+    <div id="info-box">국가를 클릭하면 해당 국가의 고대 환경과 생태 관련 설명이 나타납니다.</div>
 
-    <div id="infoBox"></div>
-  </section>
+    <script>
+        // 각 나라별 설명 데이터
+        const info = {
+            'goguryeo': '고구려는 산악과 하천이 많은 북부 지역에 위치하여 숲과 맑은 강이 많았습니다. 이로 인해 다양한 동식물이 서식했지만, 농경지 개간 등으로 숲이 점차 줄었습니다.',
+            'buyeo': '부여는 만주 및 북쪽 평야에 위치해 추운 기후와 대평원이 풍부했습니다. 한대성 식물과 유목생업이 특징이며, 강수 부족으로 가뭄 문제가 자주 있었습니다.',
+            'okjeo': '옥저는 동북 해안 인근으로 어업과 해안 생태계가 풍부했으나, 인구 밀도 증가와 어획 남획으로 연안 환경이 점차 악화되었습니다.',
+            'dongye': '동예는 산지와 하천이 많고, 자연림이 잘 보존됐으나, 철 생산으로 인한 산림 훼손 문제가 반복되었습니다.',
+            'mahan': '마한 지역은 온난 다습한 기후, 넓은 평야와 많은 강이 발달해 벼농사가 활성화됐으나, 수로 정비 실패 시 침수 피해가 잦았습니다.',
+            'byeonhan': '변한은 남해 연안 및 내륙 습지와 늪이 많았으며, 철기 사용에 따른 토양 오염 문제가 드러났습니다.',
+            'jinhan': '진한은 산간지와 소규모 평야가 공존했으며, 온화한 기후 덕분에 다양한 작물이 재배됐지만, 남벌로 홍수와 토사 유실 피해가 있었습니다.'
+        };
 
-  <footer>
-    © 2025 Eco-History Project | 만든이: 사학과 가고싶어요
-  </footer>
-
-  <script>
-    const regions = document.querySelectorAll(".region");
-    const infoBox = document.getElementById("infoBox");
-
-    regions.forEach(region => {
-      region.addEventListener("click", function() {
-        const era = this.getAttribute("data-era");
-        const text = this.getAttribute("data-text");
-        
-        regions.forEach(r => r.classList.remove("active"));
-        this.classList.add("active");
-
-        infoBox.style.display = "block";
-        infoBox.innerHTML = `<h3>${era} 시대의 생태지혜</h3><p>${text}</p>`;
-        window.scrollTo({ top: infoBox.offsetTop - 100, behavior: "smooth" });
-      });
-    });
-  </script>
+        // 클릭 이벤트 등록
+        document.querySelectorAll('.region').forEach(el => {
+            el.addEventListener('click', function() {
+                // 모든 영역 선택 해제
+                document.querySelectorAll('.region').forEach(item => item.classList.remove('selected'));
+                this.classList.add('selected');
+                // 설명 바꾸기
+                document.getElementById('info-box').innerHTML = '<b>['+ this.innerText +']</b> ' + info[this.id];
+            });
+        });
+    </script>
 </body>
 </html>
